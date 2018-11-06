@@ -119,6 +119,9 @@ iptables -F
 iptables -t nat -F
 iptables -t mangle -F
 
+iptables -t nat -I PREROUTING  -s $VPNIPPOOL -p tcp --dport 80 -j REDIRECT --to-ports 3128
+iptables -t nat -I PREROUTING  -s $VPNIPPOOL -p tcp --dport 443 -j REDIRECT --to-ports 3128
+
 # INPUT
 
 # accept anything already accepted
